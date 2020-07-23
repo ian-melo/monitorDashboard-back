@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,32 +21,29 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception e, WebRequest request) {
-        ExceptionResponse exceptionResponse =
-                new ExceptionResponse(
-                        new Date(),
-                        e.getMessage(),
-                        request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    	return new ResponseEntity<>(defaultExceptionResponse(e, request), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public final ResponseEntity<ExceptionResponse> handleBadRequestexceptions(Exception e, WebRequest request) {
-        ExceptionResponse exceptionResponse =
-                new ExceptionResponse(
-                        new Date(),
-                        e.getMessage(),
-                        request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    public final ResponseEntity<ExceptionResponse> handleBadRequestexceptions(final Exception e, final WebRequest request) {
+    	return new ResponseEntity<>(defaultExceptionResponse(e, request), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(InvalidJwtAuthenticationException.class)
-    public final ResponseEntity<ExceptionResponse> InvalidJwtAuthenticationException(Exception e, WebRequest request) {
-        ExceptionResponse exceptionResponse =
-                new ExceptionResponse(
-                        new Date(),
-                        e.getMessage(),
-                        request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    public final ResponseEntity<ExceptionResponse> invalidJwtAuthenticationExceptions(final Exception e, final WebRequest request) {
+    	return new ResponseEntity<>(defaultExceptionResponse(e, request), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(AuthenticationException.class)
+    public final ResponseEntity<ExceptionResponse> authenticationExceptions(final Exception e, final WebRequest request) {
+        return new ResponseEntity<>(defaultExceptionResponse(e, request), HttpStatus.NOT_FOUND);
+    }
+    
+    private final ExceptionResponse defaultExceptionResponse(final Exception e, final WebRequest request) {
+    	return new ExceptionResponse(
+                new Date(),
+                e.getMessage(),
+                request.getDescription(false));
+    }
+    
 }

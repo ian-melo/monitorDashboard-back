@@ -35,12 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 
+	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic().disable().csrf().disable().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/auth/sign", "/api-docs**", "swagger-ui.html***").permitAll()
-				.antMatchers("/api/**").authenticated()
-				//.antMatchers("/users").denyAll()
+//				.antMatchers("/auth/sign", "/api-docs**", "swagger-ui.html***").permitAll()
+//				.antMatchers("/api/**").permitAll()//.authenticated()
+				.antMatchers("/***").permitAll()
 				.and().apply(new JwtConfigurer(tokenProvider));
 	}
 }

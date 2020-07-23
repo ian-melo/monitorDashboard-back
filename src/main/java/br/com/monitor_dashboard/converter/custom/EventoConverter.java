@@ -4,7 +4,7 @@ import br.com.monitor_dashboard.data.dto.RelatorioEventoDTO;
 import br.com.monitor_dashboard.data.model.Evento;
 
 public class EventoConverter {
-
+	
 	public static RelatorioEventoDTO translateToRelatorioDTO(Evento entity) {
 		return RelatorioEventoDTO.builder()
 				.id(entity.getId())

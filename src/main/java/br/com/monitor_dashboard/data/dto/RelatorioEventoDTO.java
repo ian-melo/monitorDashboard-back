@@ -26,6 +26,6 @@ public class RelatorioEventoDTO extends RepresentationModel<RelatorioEventoDTO> 
 	private Long id;
 	private String equipamento;
 	private String alarme;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate data;
 }

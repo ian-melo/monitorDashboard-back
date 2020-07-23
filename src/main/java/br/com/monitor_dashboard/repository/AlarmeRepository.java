@@ -14,7 +14,7 @@ import br.com.monitor_dashboard.data.model.Alarme;
 @Repository
 public interface AlarmeRepository extends JpaRepository<Alarme, Long> {
 
-    @Query("SELECT a FROM Alarme a "
+    @Query("SELECT DISTINCT a FROM Alarme a "
     		+ "JOIN a.eventos ev "
     		+ "WHERE ev.data BETWEEN :inicio AND :fim "
     		+ "ORDER BY a.id")

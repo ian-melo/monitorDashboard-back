@@ -70,8 +70,8 @@ public class EventoController {
     @GetMapping(value = "/{inicio}/{fim}", produces = {"application/json", "application/xml", "application/x-yaml"})
     @ApiOperation(value = "Obtém os eventos entre datas")
     public ResponseEntity<?> findAuthorByName(
-    		@PathVariable("inicio") @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate inicio,
-    		@PathVariable("fim") @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate fim,
+    		@PathVariable("inicio") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate inicio,
+    		@PathVariable("fim") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate fim,
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "limit", defaultValue = "0") int limit,
             @RequestParam(value = "direction", defaultValue = "desc") String direction) {

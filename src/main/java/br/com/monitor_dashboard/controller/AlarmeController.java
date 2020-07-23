@@ -70,8 +70,8 @@ public class AlarmeController {
     @GetMapping(value = "/{inicio}/{fim}", produces = {"application/json", "application/xml", "application/x-yaml"})
     @ApiOperation(value = "Obtém o relatório sumazirado dos alarmes entre datas")
     public ResponseEntity<PagedModel<EntityModel<RelatorioAlarmeDTO>>> findPersonByName(
-    		@PathVariable("inicio") @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate inicio,
-    		@PathVariable("fim") @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate fim,
+    		@PathVariable("inicio") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate inicio,
+    		@PathVariable("fim") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate fim,
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "limit", defaultValue = "0") int limit,
             @RequestParam(value = "direction", defaultValue = "asc") String direction) {
