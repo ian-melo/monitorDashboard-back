@@ -4,20 +4,19 @@ Monitor dashboard backend.
 ## Tecnologias
 - Java 8
 - Spring Boot 2.3.1
-- FlyWay
 - MySQL 5
 
 ## Como executar
 - Na pasta raiz, executar:
 
 ```bash
-docker-compose up --build
+./mvnw spring-boot:run
 ```
 
 ## Como testar
 - Na pasta raiz, executar:
 
 ```bash
-./mvnw verify
+./mvnw clean verify
 ```
-- Abrir o arquivo `target/site/jacoco/index.html`.
+- Abrir o arquivo `./target/site/jacoco/index.html`.

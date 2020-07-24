@@ -43,12 +43,6 @@
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
-		<!-- Dozer -->
-		<dependency>
-			<groupId>com.github.dozermapper</groupId>
-			<artifactId>dozer-core</artifactId>
-			<version>6.5.0</version>
-		</dependency>
 		<!-- Spring Boot - Rest controllers -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,21 +52,6 @@
 		<dependency>
 			<groupId>org.springframework.hateoas</groupId>
 			<artifactId>spring-hateoas</artifactId>
-		</dependency>
-		<!-- Spring Boot - Validation -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-		<!-- Spring Boot - Secutiry -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
 		</dependency>
 		<!-- Spring Boot - Configuration processor -->
 		<dependency>
@@ -93,11 +72,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<!-- Flyway -->
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
 		</dependency>
 		<!-- Swagger -->
 		<dependency>
@@ -158,29 +132,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<!-- Flyway -->
-			<plugin>
-				<groupId>org.flywaydb</groupId>
-				<artifactId>flyway-maven-plugin</artifactId>
-				<configuration>
-					<url>jdbc:mysql://localhost:3306/projeto?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>
-					<user>root</user>
-					<password>root</password>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>${mysql.version}</version>
-						<exclusions>
-							<exclusion>
-								<groupId>org.slf4j</groupId>
-								<artifactId>slf4j-api</artifactId>
-							</exclusion>
-						</exclusions>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
