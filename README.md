@@ -20,3 +20,6 @@ Monitor dashboard backend.
 ./mvnw clean verify
 ```
 - Abrir o arquivo `./target/site/jacoco/index.html`.
+
+## Contribuição
+- [miguelmlima](https://github.com/miguelmlima)
